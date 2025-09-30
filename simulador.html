@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador Gamificado: Casos de Reflexão</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .botao-concluido {
+      background-color: #16a34a !important; /* verde Tailwind */
+    }
+    .medalha {
+      font-size: 2rem;
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-6 font-sans">
+
+  <h1 class="text-2xl font-bold text-center mb-6">🏆 Simulador Gamificado: Casos de Reflexão</h1>
+
+  <!-- Progresso -->
+  <div id="progresso" class="flex justify-center gap-2 mb-6"></div>
+  <div id="pontuacao" class="text-center text-gray-700 mb-4 font-semibold"></div>
+
+  <div class="flex flex-wrap justify-center gap-4 mb-6">
+    <button id="btn1" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(1)">Caso 1</button>
+    <button id="btn2" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(2)">Caso 2</button>
+    <button id="btn3" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(3)">Caso 3</button>
+    <button id="btn4" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(4)">Caso 4</button>
+  </div>
+
+  <div id="caixaCaso" class="bg-white p-6 rounded shadow max-w-2xl mx-auto transition-all duration-500">
+    <h2 id="tituloCaso" class="text-xl font-bold text-gray-700 mb-2">Selecione um caso acima 👆</h2>
+    <p id="textoCaso" class="text-gray-600 mb-4"></p>
+
+    <textarea id="respostaAluno" class="w-full border rounded p-2 mb-4" rows="4" placeholder="Escreva sua resposta/reflexão aqui..."></textarea>
+    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition" onclick="avaliarResposta()">Enviar Resposta</button>
+
+    <div id="feedback" class="mt-4 text-gray-700"></div>
+    <div id="reflexao" class="mt-4 text-blue-700 font-semibold"></div>
+    <div id="medalha" class="mt-4 text-center"></div>
+  </div>
+
+<script>
+  const casos = {
+    1: {
+      descricao: "Uma criança de 7 anos pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como explicar esse pluralismo?",
+      reflexao: "Explique que diferentes religiões têm tradições e formas de expressar fé diversas, mas todas buscam sentido e conexão com o sagrado.",
+      concluido: false
+    },
+    2: {
+      descricao: "Um adolescente em crise de identidade sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como aconselhá-lo?",
+      reflexao: "Incentive a reflexão pessoal, mostrando que é importante conhecer a si mesmo e respeitar suas próprias crenças, sem pressa de decidir.",
+      concluido: false
+    },
+    3: {
+      descricao: "Um adulto relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. Como se deve acolhê-lo?",
+      reflexao: "Valorize a busca por sentido pessoal e diferentes formas de espiritualidade, reconhecendo o que traz bem-estar e equilíbrio.",
+      concluido: false
+    },
+    4: {
+      descricao: "Uma pessoa idosa encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos que se declaram sem religião. Como ajudá-la neste processo de finitude?",
+      reflexao: "Mostre empatia e respeito, incentivando diálogo e compreensão entre gerações, e reafirmando a importância do sentido pessoal na fé.",
+      concluido: false
+    }
+  };
+
+  let casoAtual = null;
+
+  function atualizarProgresso() {
+    const progresso = document.getElementById("progresso");
+    const pontuacao = document.getElementById("pontuacao");
+    const medalhaDiv = document.getElementById("medalha");
+    progresso.innerHTML = '';
+    let completados = 0;
+
+    for (let i = 1; i <= 4; i++) {
+      const bola = document.createElement("div");
+      bola.className = `w-6 h-6 rounded-full ${casos[i].concluido ? 'bg-green-500' : 'bg-gray-300'}`;
+      progresso.appendChild(bola);
+      if (casos[i].concluido) completados++;
+    }
+
+    pontuacao.textContent = `Casos concluídos: ${completados} / 4`;
+
+    // Mostra medalha se todos os casos forem concluídos
+    if (completados === 4) {
+      medalhaDiv.innerHTML = `🏅 Parabéns! Você completou todos os casos!`;
+    } else {
+      medalhaDiv.innerHTML = '';
+    }
+  }
+
+  function mostrarCaso(n) {
+    casoAtual = n;
+
+    const caixa = document.getElementById("caixaCaso");
+    const titulo = document.getElementById("tituloCaso");
+    const texto = document.getElementById("textoCaso");
+    const textarea = document.getElementById("respostaAluno");
+    const feedback = document.getElementById("feedback");
+    const reflexao = document.getElementById("reflexao");
+
+    // Animação fade
+    caixa.classList.add("fade-enter");
+    setTimeout(() => {
+      titulo.textContent = `Caso ${n}`;
+      texto.textContent = casos[n].descricao;
+      textarea.value = "";
+      feedback.textContent = "";
+      reflexao.textContent = "";
+      caixa.classList.remove("fade-enter");
+      caixa.classList.add("fade-enter-active");
+    }, 50);
+    setTimeout(() => caixa.classList.remove("fade-enter-active"), 500);
+  }
+
+  function avaliarResposta() {
+    const resposta = document.getElementById("respostaAluno").value.trim();
+    if (!resposta) {
+      document.getElementById("feedback").textContent = "Por favor, escreva sua resposta antes de enviar.";
+      return;
+    }
+    casos[casoAtual].concluido = true;
+
+    document.getElementById("feedback").textContent = "✅ Resposta registrada! Confira abaixo uma sugestão de reflexão:";
+    document.getElementById("reflexao").textContent = casos[casoAtual].reflexao;
+
+    // Atualiza progresso e botão concluído
+    atualizarProgresso();
+    document.getElementById(`btn${casoAtual}`).classList.add("botao-concluido");
+  }
+
+  // Inicializa barra de progresso
+  atualizarProgresso();
+</script>
+
+</body>
+</html>
