@@ -4,7 +4,20 @@
   <meta charset="UTF-8">
   <title>Fé em Perspectiva!</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800;900&display=swap" rel="stylesheet">
+  
   <style>
+    /* Definição da fonte e cores base */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F8F8F8;
+      font-weight: 400; /* Peso padrão para textos corridos */
+    }
+
+    /* Estilos para animação */
     .fade-enter {
       opacity: 0;
       transform: translateY(-10px);
@@ -14,62 +27,80 @@
       transform: translateY(0);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
+
+    /* Classe para o botão de caso concluído */
     .botao-concluido {
-      background-color: #16a34a !important; /* verde Tailwind */
+      background-color: #00ABAC !important; /* Cor complementar para sucesso */
     }
+
+    /* Estilos para a medalha */
     .medalha {
-      font-size: 2rem;
-      margin-left: 0.5rem;
+      font-size: 1.5rem; /* Ajuste no tamanho da medalha */
+      margin-top: 1rem;
     }
   </style>
 </head>
-<body class="bg-gray-100 p-6 font-sans">
+<body class="p-6">
 
-  <h1 class="text-2xl font-bold text-center mb-6">Fé em Perspectiva</h1>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-black uppercase text-center mb-8" style="color: #8a0538;">
+      Fé em Perspectiva
+    </h1>
 
-  <!-- Progresso -->
-  <div id="progresso" class="flex justify-center gap-2 mb-6"></div>
-  <div id="pontuacao" class="text-center text-gray-700 mb-4 font-semibold"></div>
+    <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+      <h2 class="text-xl font-extrabold uppercase mb-3" style="color: #9654ff;">
+        Por que saber disso?
+      </h2>
+      <p class="text-gray-700 leading-relaxed">
+        Compreender a psicologia da religião é uma ferramenta fundamental para profissionais que lidam com a diversidade humana. Em um mundo plural, saber como as crenças e a espiritualidade moldam a identidade, as crises e as transições da vida permite uma abordagem mais empática e eficaz, seja em um consultório, em uma sala de aula ou em qualquer espaço de acolhimento. Este simulador oferece um treino prático para desenvolver essa sensibilidade.
+      </p>
+    </div>
+    
+    <div class="bg-white p-6 rounded-lg shadow-sm">
+      <div id="progresso" class="flex justify-center gap-2 mb-2"></div>
+      <div id="pontuacao" class="text-center text-gray-700 mb-6 font-normal uppercase text-sm"></div>
 
-  <div class="flex flex-wrap justify-center gap-4 mb-6">
-    <button id="btn1" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(1)">Caso 1</button>
-    <button id="btn2" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(2)">Caso 2</button>
-    <button id="btn3" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(3)">Caso 3</button>
-    <button id="btn4" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" onclick="mostrarCaso(4)">Caso 4</button>
-  </div>
+      <div class="flex flex-wrap justify-center gap-4 mb-6">
+        <button id="btn1" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(1)">Caso 1</button>
+        <button id="btn2" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(2)">Caso 2</button>
+        <button id="btn3" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(3)">Caso 3</button>
+        <button id="btn4" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(4)">Caso 4</button>
+      </div>
 
-  <div id="caixaCaso" class="bg-white p-6 rounded shadow max-w-2xl mx-auto transition-all duration-500">
-    <h2 id="tituloCaso" class="text-xl font-bold text-gray-700 mb-2">Escolha um caso👆</h2>
-    <p id="textoCaso" class="text-gray-600 mb-4"></p>
+      <div id="caixaCaso" class="bg-gray-50 p-6 rounded-md border border-gray-200 transition-all duration-500">
+        <h2 id="tituloCaso" class="text-xl font-extrabold mb-2 uppercase" style="color: #9654ff;">Escolha um caso 👆</h2>
+        <p id="textoCaso" class="text-gray-600 mb-4"></p>
 
-    <textarea id="respostaAluno" class="w-full border rounded p-2 mb-4" rows="4" placeholder="Escreva sua resposta/reflexão aqui..."></textarea>
-    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition" onclick="avaliarResposta()">Enviar Resposta</button>
+        <textarea id="respostaAluno" class="w-full border rounded p-3 mb-4 text-gray-700 bg-white" rows="4" placeholder="Escreva sua resposta/reflexão aqui..."></textarea>
+        <button class="text-white px-6 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #ff0040; color: #ffffff;" onmouseover="this.style.backgroundColor='#e00038'" onmouseout="this.style.backgroundColor='#ff0040'" onclick="avaliarResposta()">Enviar Resposta</button>
 
-    <div id="feedback" class="mt-4 text-gray-700"></div>
-    <div id="reflexao" class="mt-4 text-blue-700 font-semibold"></div>
-    <div id="medalha" class="mt-4 text-center"></div>
+        <div id="feedback" class="mt-4 text-gray-800 font-semibold"></div>
+        <div id="reflexao" class="mt-4 font-semibold" style="color: #DB5284;"></div>
+        <div id="medalha" class="mt-4 text-center font-bold medalha" style="color: #8a0538;"></div>
+      </div>
+    </div>
   </div>
 
 <script>
   const casos = {
     1: {
-      descricao: "Luiza de 7 anos pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como explicar esse pluralismo?",
-      reflexao: "Compartilhe sua resposta com os colegas na webconferência",
+      descricao: "Luiza, de 7 anos, pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como você poderia explicar esse pluralismo de forma acessível para a idade dela?",
+      reflexao: "Excelente! Reflita sobre a importância da linguagem lúdica ao abordar temas complexos com crianças.",
       concluido: false
     },
     2: {
-      descricao: "Luan é um típico adolescente em crise de identidade. Ele sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como aconselhá-lo?",
-      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
+      descricao: "Luan é um adolescente em crise de identidade. Ele sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como você o aconselharia, focando no acolhimento e no respeito ao seu processo?",
+      reflexao: "Ótima abordagem. A escuta ativa é essencial para acolher as dúvidas e angústias típicas da adolescência.",
       concluido: false
     },
     3: {
-      descricao: "Um adulto relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. Como se deve acolhê-lo?",
-      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
+      descricao: "Um adulto relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. De que maneira você o acolheria, validando sua jornada pessoal sem julgamentos?",
+      reflexao: "Perfeito. Reconhecer as múltiplas formas de vivenciar a espiritualidade é um sinal de maturidade profissional.",
       concluido: false
     },
     4: {
-      descricao: "Uma pessoa idosa encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos que se declaram sem religião. Como ajudá-la neste processo de finitude?",
-      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
+      descricao: "Uma pessoa idosa encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos. Como você poderia mediar essa situação, promovendo o respeito intergeracional?",
+      reflexao: "Sua reflexão foi muito pertinente. O suporte à fé na fase final da vida é um aspecto crucial do cuidado humanizado.",
       concluido: false
     }
   };
@@ -85,14 +116,13 @@
 
     for (let i = 1; i <= 4; i++) {
       const bola = document.createElement("div");
-      bola.className = `w-6 h-6 rounded-full ${casos[i].concluido ? 'bg-green-500' : 'bg-gray-300'}`;
+      bola.className = `w-5 h-5 rounded-full border-2 ${casos[i].concluido ? 'bg-green-500 border-green-600' : 'bg-gray-300 border-gray-400'}`;
       progresso.appendChild(bola);
       if (casos[i].concluido) completados++;
     }
 
     pontuacao.textContent = `Casos concluídos: ${completados} / 4`;
 
-    // Mostra medalha se todos os casos forem concluídos
     if (completados === 4) {
       medalhaDiv.innerHTML = `🏅 Parabéns! Você completou todos os casos!`;
     } else {
@@ -110,7 +140,6 @@
     const feedback = document.getElementById("feedback");
     const reflexao = document.getElementById("reflexao");
 
-    // Animação fade
     caixa.classList.add("fade-enter");
     setTimeout(() => {
       titulo.textContent = `Caso ${n}`;
@@ -118,32 +147,50 @@
       textarea.value = "";
       feedback.textContent = "";
       reflexao.textContent = "";
+      
+      // Habilita a área de texto e o botão, caso tenham sido desabilitados
+      textarea.disabled = false;
+      caixa.querySelector('button').disabled = false;
+
       caixa.classList.remove("fade-enter");
       caixa.classList.add("fade-enter-active");
     }, 50);
-    setTimeout(() => caixa.classList.remove("fade-enter-active"), 500);
+    setTimeout(() => caixa.classList.remove("fade-enter-active"), 400);
   }
 
   function avaliarResposta() {
+    if (casoAtual === null) {
+        document.getElementById("feedback").textContent = "Por favor, selecione um caso primeiro.";
+        return;
+    }
+      
     const resposta = document.getElementById("respostaAluno").value.trim();
+    const textarea = document.getElementById("respostaAluno");
+    const btnEnviar = document.querySelector("#caixaCaso button");
+
     if (!resposta) {
       document.getElementById("feedback").textContent = "Por favor, escreva sua resposta antes de enviar.";
       return;
     }
+    
     casos[casoAtual].concluido = true;
 
-    document.getElementById("feedback").textContent = "✅ Resposta registrada!";
+    document.getElementById("feedback").textContent = "✅ Resposta registrada com sucesso!";
     document.getElementById("reflexao").textContent = casos[casoAtual].reflexao;
+    
+    // Desabilita a edição após o envio
+    textarea.disabled = true;
+    btnEnviar.disabled = true;
 
-    // Atualiza progresso e botão concluído
     atualizarProgresso();
     document.getElementById(`btn${casoAtual}`).classList.add("botao-concluido");
   }
 
-  // Inicializa barra de progresso
-  atualizarProgresso();
+  // Inicializa a interface
+  window.onload = function() {
+    atualizarProgresso();
+  };
 </script>
 
 </body>
 </html>
-
