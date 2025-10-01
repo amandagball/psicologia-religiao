@@ -48,11 +48,11 @@
     </h1>
 
     <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
-      <h2 class="text-xl font-extrabold uppercase mb-3" style="color: #9654ff;">
-        Sua tarefa:
-      </h2>
       <p class="text-gray-700 leading-relaxed">
         Compreender a psicologia da religião é uma ferramenta fundamental para profissionais que lidam com a diversidade humana. Em um mundo plural, saber como as crenças e a espiritualidade moldam a identidade, as crises e as transições da vida permite uma abordagem mais empática e eficaz, seja em um consultório, em uma sala de aula ou em qualquer espaço de acolhimento. Este simulador oferece um treino prático para desenvolver essa sensibilidade.
+           <h2 class="text-xl font-extrabold uppercase mb-3" style="color: #9654ff;">
+        Sua tarefa:
+      </h2>
       <p class="text-gray-700 leading-relaxed">
         Temos quatro casos a seguir (e alguns deles você já conhece por conta dos spoilers!!!). Analise cada um deles e:
               <p class="text-gray-700 leading-relaxed">
@@ -74,7 +74,7 @@
         <button id="btn1" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(1)">Caso 1</button>
         <button id="btn2" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(2)">Caso 2</button>
         <button id="btn3" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(3)">Caso 3</button>
-        <button id="btn4" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(4)">Caso 4</button>
+        <button id="btn4" class="text-white px-5 py-2 rounded-md transition duration-300 font-semibold" style="background-color: #6D64AE; color: #ffffff;" onmouseover="this.style.backgroundColor='#5e569a'" onmouseout="this.style.backgroundColor='#6D64AE'" onclick="mostrarCaso(4)">Caso 4 (bônus)</button>
       </div>
 
       <div id="caixaCaso" class="bg-gray-50 p-6 rounded-md border border-gray-200 transition-all duration-500">
@@ -94,23 +94,25 @@
 <script>
   const casos = {
     1: {
-      descricao: "Luiza, de 7 anos, pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como você poderia explicar esse pluralismo de forma acessível para a idade dela?",
-      reflexao: "Excelente! Reflita sobre a importância da linguagem lúdica ao abordar temas complexos com crianças.",
+      descricao: "Dona Helena encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos. Como você poderia ajuda-la neste processo de finitude?",
+      reflexao: "Assumindo a perspectiva de um profissional da psicologia da religião, a situação de Dona Helena é extremamente delicada e, infelizmente, comum em um contexto de crescente diversidade de crenças e visões de mundo entre gerações. A abordagem seria centrada em Dona Helena, fortalecendo-a e validando sua experiência. O trabalho com a família seria secundário e focado em construir pontes de empatia e respeito, não de concordância teológica. O objetivo final não é que todos acreditem na mesma coisa, mas que o amor e o respeito prevaleçam, garantindo que Dona Helena possa viver seu processo de finitude com a máxima dignidade e paz interior.",
       concluido: false
     },
     2: {
       descricao: "Luan é um adolescente em crise de identidade. Ele sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como você o aconselharia, focando no acolhimento e no respeito ao seu processo?",
-      reflexao: "Ótima abordagem. A escuta ativa é essencial para acolher as dúvidas e angústias típicas da adolescência.",
+      reflexao: "A situação de Luan é um dos dilemas mais clássicos e importantes da adolescência, um período em que a formação da identidade (psicológica, social e espiritual) está no centro do palco.
+Como profissional da psicologia da religião, a abordagem com Luan seria focada no acolhimento, na exploração e no empoderamento, evitando qualquer tipo de direcionamento ou juízo de valor. O papel do profissional não seria dizer a ele qual caminho seguir, mas sim ser um facilitador em seu processo de autodescoberta, para que ele possa tomar uma decisão que seja autêntica para si.",
       concluido: false
     },
     3: {
-      descricao: "Um adulto relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. De que maneira você o acolheria, validando sua jornada pessoal sem julgamentos?",
-      reflexao: "Perfeito. Reconhecer as múltiplas formas de vivenciar a espiritualidade é um sinal de maturidade profissional.",
+      descricao: "Carlos, um publicitário de 42 anos, relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. De que maneira você o acolheria?",
+      reflexao: "A situação de Carlos é extremamente representativa de um movimento crescente na sociedade ocidental: a busca por uma espiritualidade autêntica, muitas vezes fora dos moldes institucionais. O acolhimento a Carlos seria fundamentado no respeito absoluto por sua jornada e em uma curiosidade genuína para compreender o significado dessa transição para ele. O objetivo não é diagnosticar ou "consertar" nada, mas sim oferecer um espaço de reflexão para que ele possa integrar essa nova fase em sua identidade.",
       concluido: false
     },
     4: {
-      descricao: "Uma pessoa idosa encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos. Como você poderia mediar essa situação, promovendo o respeito intergeracional?",
-      reflexao: "Sua reflexão foi muito pertinente. O suporte à fé na fase final da vida é um aspecto crucial do cuidado humanizado.",
+      descricao: "Luiza, de 7 anos, pergunta à professora porque pessoas de diferentes religiões rezam de modos distintos. Como você poderia explicar esse pluralismo de forma acessível para a idade dela?",
+      reflexao: "Este é um caso maravilhoso e uma oportunidade de ouro para plantar sementes de respeito, empatia e curiosidade em uma criança. A pergunta da Luiza é fantástica, um sinal de inteligência e de uma grande sensibilidade para o mundo ao redor.
+Como um profissional que estuda o desenvolvimento da espiritualidade, a abordagem para uma criança de 7 anos deve ser cuidadosamente elaborada para ser simples, concreta e afetiva, sem ser simplista ou doutrinária. O objetivo não é dar uma aula de teologia comparada, mas sim construir uma base para o respeito ao pluralismo.",
       concluido: false
     }
   };
@@ -204,6 +206,7 @@
 
 </body>
 </html>
+
 
 
 
