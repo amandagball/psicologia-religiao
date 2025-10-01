@@ -25,7 +25,7 @@
 </head>
 <body class="bg-gray-100 p-6 font-sans">
 
-  <h1 class="text-2xl font-bold text-center mb-6">🏆 Simulador Gamificado: Casos de Reflexão</h1>
+  <h1 class="text-2xl font-bold text-center mb-6">Fé em Perspectiva</h1>
 
   <!-- Progresso -->
   <div id="progresso" class="flex justify-center gap-2 mb-6"></div>
@@ -39,7 +39,7 @@
   </div>
 
   <div id="caixaCaso" class="bg-white p-6 rounded shadow max-w-2xl mx-auto transition-all duration-500">
-    <h2 id="tituloCaso" class="text-xl font-bold text-gray-700 mb-2">Selecione um caso acima 👆</h2>
+    <h2 id="tituloCaso" class="text-xl font-bold text-gray-700 mb-2">Escolha um caso👆</h2>
     <p id="textoCaso" class="text-gray-600 mb-4"></p>
 
     <textarea id="respostaAluno" class="w-full border rounded p-2 mb-4" rows="4" placeholder="Escreva sua resposta/reflexão aqui..."></textarea>
@@ -53,23 +53,23 @@
 <script>
   const casos = {
     1: {
-      descricao: "Uma criança de 7 anos pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como explicar esse pluralismo?",
-      reflexao: "Explique que diferentes religiões têm tradições e formas de expressar fé diversas, mas todas buscam sentido e conexão com o sagrado.",
+      descricao: "Luiza de 7 anos pergunta à professora por que pessoas de diferentes religiões rezam de modos distintos. Como explicar esse pluralismo?",
+      reflexao: "Compartilhe sua resposta com os colegas na webconferência",
       concluido: false
     },
     2: {
-      descricao: "Um adolescente em crise de identidade sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como aconselhá-lo?",
-      reflexao: "Incentive a reflexão pessoal, mostrando que é importante conhecer a si mesmo e respeitar suas próprias crenças, sem pressa de decidir.",
+      descricao: "Luan é um típico adolescente em crise de identidade. Ele sente-se dividido entre seguir a tradição religiosa da família ou explorar novas espiritualidades. Como aconselhá-lo?",
+      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
       concluido: false
     },
     3: {
       descricao: "Um adulto relata que abandonou a religião institucional, mas busca práticas de meditação e espiritualidade na natureza. Como se deve acolhê-lo?",
-      reflexao: "Valorize a busca por sentido pessoal e diferentes formas de espiritualidade, reconhecendo o que traz bem-estar e equilíbrio.",
+      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
       concluido: false
     },
     4: {
       descricao: "Uma pessoa idosa encontra grande sentido na fé para lidar com a proximidade da morte, mas é ridicularizada pelos netos que se declaram sem religião. Como ajudá-la neste processo de finitude?",
-      reflexao: "Mostre empatia e respeito, incentivando diálogo e compreensão entre gerações, e reafirmando a importância do sentido pessoal na fé.",
+      reflexao: "Compartilhe sua resposta com os colegas na webconferência.",
       concluido: false
     }
   };
@@ -132,7 +132,7 @@
     }
     casos[casoAtual].concluido = true;
 
-    document.getElementById("feedback").textContent = "✅ Resposta registrada! Confira abaixo uma sugestão de reflexão:";
+    document.getElementById("feedback").textContent = "✅ Resposta registrada!";
     document.getElementById("reflexao").textContent = casos[casoAtual].reflexao;
 
     // Atualiza progresso e botão concluído
@@ -146,5 +146,4 @@
 
 </body>
 </html>
-
 
